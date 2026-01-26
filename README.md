@@ -9,8 +9,9 @@ A Java console application designed to manage a digital music collection. This p
 * **Custom Song Creation:** Users can input specific details for new songs.
 * **Default Placeholder:** Users can quickly add a "default" song to the list using a secondary constructor.
 * **Encapsulation & Validation:** A built-in "bouncer" rule in the Song class ensures all ratings are capped between 1 and 5, regardless of user input.
-* **Playlist Statistics:** A non-trivial method that iterates through the collection to calculate the average rating of all songs.
+* **Playlist Statistics:**Iterates through the collection to calculate the average rating of all songs.
 * **Dynamic Storage:** Uses an ArrayList to allow the playlist to grow or shrink dynamically.
+* * **Menu Input Validation:** The program uses `hasNextInt()` logic to catch non-numeric inputs (like letters or symbols). Instead of crashing, the program displays a user-friendly error message and restarts the menu loop.
 
 ### How to Run
 1. Open your terminal or command prompt.
