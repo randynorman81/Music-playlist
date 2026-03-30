@@ -1,40 +1,62 @@
+import java.util.ArrayList;
 
-//I now see that ArrayList is different than Array (Array is a determined # of slots.. ArrayList is expandable)
-import java.util.ArrayList; 
-
+/**
+ * Manages an ArrayList of Media items.
+ * Uses the parent type Media to store Song, Podcast, and MusicVideo objects.
+ */
 public class Playlist {
-//the ArrayList that will hold all our Song objects
-    private ArrayList<Song> songList = new ArrayList<>();
+    private ArrayList<Media> list = new ArrayList<>();
 
-// Add a song to the list
-    public void addSong(Song s) {
-        songList.add(s);
-        System.out.println(s.getTitle() + " added to your playlist!");
+    /**
+     * Adds a media item to the playlist.
+     * @param m the item to add
+     */
+    public void add(Media m) {
+        list.add(m);
+        System.out.println("Added: " + m.getTitle());
     }
 
-//iteration
-// This goes through every song in the list and shows its details
-    public void showAllSongs() {
-        System.out.println("YOUR PLAYLIST");
-        for (Song s : songList) {
-            s.displaySong();
-            System.out.println("-------------------------");
+    /**
+     * Removes the item at the given 0-based index.
+     * @param i the index to remove
+     */
+    public void remove(int i) {
+        if (i >= 0 && i < list.size()) {
+            System.out.println("Removed: " + list.get(i).getTitle());
+            list.remove(i);
+        } else {
+            System.out.println("Invalid number.");
         }
     }
 
-    // NON-TRIVIAL METHOD: Calculate Average Rating
-    // This satisfies the "Computing/Summarizing Data" requirement
-    public void showAverageRating() {
-        if (songList.isEmpty()) {
-            System.out.println("Playlist is empty:-(");
+    /**
+     * Updates the title of the item at the given 0-based index.
+     * @param i the index to update
+     * @param newTitle the new title
+     */
+    public void update(int i, String newTitle) {
+        if (i >= 0 && i < list.size()) {
+            list.get(i).setTitle(newTitle);
+        } else {
+            System.out.println("Invalid number.");
+        }
+    }
+
+    /**
+     * Displays all items in the playlist.
+     * Calls display() on each item, demonstrating polymorphism.
+     */
+    public void showAll() {
+        if (list.isEmpty()) {
+            System.out.println("Playlist is empty.");
             return;
         }
-        
-        double total = 0;
-        for (Song s : songList) {
-            total += s.getRating();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print((i + 1) + ". ");
+            list.get(i).display(); // POLYMORPHISM: same call, different output per type
         }
-        double average = total / songList.size();
-        System.out.println("Average Playlist Rating: " + average + " / 5 stars");
     }
+
+    /** @return the number of items in the playlist */
+    public int size() { return list.size(); }
 }
