@@ -28,3 +28,9 @@ Main         — menu loop and user interaction
 
 ## Level Completed
 Level 1 (Required)
+
+## Level 2 Completed 
+Level 2 (extra)
+
+## Level 3 Attempted
+Level 3 (extra)
